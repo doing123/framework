@@ -1,0 +1,5 @@
+define('tinyPlus',[],function(){
+    return {};
+});
+
+
