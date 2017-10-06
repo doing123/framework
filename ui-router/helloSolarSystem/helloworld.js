@@ -1,4 +1,14 @@
 var myApp = angular.module('hellogalaxy', ['ui.router']);
+var testArr = [{
+    id: 1,
+    name: 'qjs001'
+}, {
+    id: 2,
+    name: 'qjs002'
+}, {
+    id: 3,
+    name: 'qjs003'
+}];
 myApp.config(function ($stateProvider) {
     var aboutState = {
         name: 'about',
@@ -15,8 +25,8 @@ myApp.config(function ($stateProvider) {
         url: '/people',
         component: 'people',
         resolve: {
-            people: function (PeopleService) {
-                return PeopleService.getAllPeople();
+            people: function () {
+                return testArr;
             }
         }
     };
@@ -25,8 +35,14 @@ myApp.config(function ($stateProvider) {
         url: '/people/{personId}',
         component: 'person',
         resolve: {
-            people: function (PeopleService, $transition$) {
-                return PeopleService.getAllPerson($transition$.params().personId);
+            person: function ($transition$) {
+                var len = testArr.length;
+                for (var i = 0; i < len; i++) {
+                    if ($transition$.params().personId === String(testArr[i].id)) {
+                        return testArr[i];
+                        console.log(testArr[i]);
+                    }
+                }
             }
         }
     };
@@ -35,7 +51,7 @@ myApp.config(function ($stateProvider) {
     $stateProvider.state(peopleState);
     $stateProvider.state(personState);
 });
-angular.module('hellogalaxy').component('hello', {
+myApp.component('hello', {
     template: '<h3>{{$ctrl.greeting}} Solar System!</h3>' +
     '<button ng-click="$ctrl.toggleGreeting()">toggle greeting</button>',
     controller: function () {
@@ -45,7 +61,7 @@ angular.module('hellogalaxy').component('hello', {
         };
     }
 });
-angular.module('hellogalaxy').component('people', {
+myApp.component('people', {
     bindings: {people: '<'},
     template: '<h3>Some people:</h3>' +
     '<ul>' +
@@ -55,4 +71,9 @@ angular.module('hellogalaxy').component('people', {
     '    </a>' +
     '  </li>' +
     '</ul>'
+});
+myApp.component('person', {
+    bindings: {person: '<'},
+    template: '<h3>it\'s:{{$ctrl.person.name}}</h3><h3>id:{{$ctrl.person.id}}</h3>'+
+        '<input type="button" ui-sref="people" value="Close" />'
 });
