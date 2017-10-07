@@ -75,7 +75,10 @@ myApp.component('people', {
     '    </a>' +
     '  </li>' +
     '</ul>' +
-    '<ui-view></ui-view>'//state nest
+    '<ui-view></ui-view>',//state nest
+    /*controller:function(people){
+        console.log(people);
+    }*/
 });
 myApp.component('person', {
     bindings: {person: '<'},
