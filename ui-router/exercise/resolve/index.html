@@ -30,9 +30,7 @@
 </head>
 <body ng-app="myApp">
 <a ui-sref="index">show index</a>
-<a ui-sref="index.content1">content111</a>
-<a ui-sref="index.content2">content222</a>
-<div ui-view="index"></div>
+<a ui-sref="content({username:'jack'})">show content</a>
 <ui-view></ui-view>
 <script src="../../js/angular.js"></script>
 <script src="../../js/angular-ui-router.js"></script>

@@ -16,6 +16,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state({
         name: 'backup',
         url: '/backup',
-        template: '<h1>backup</h1>'
+        template: '<h1 ui-sref="backup.content">backup</h1><div ui-view></div>'
+    });
+    $stateProvider.state({
+        name: 'backup.content',
+        url: '/content',
+        template: '<h1>content</h1>'
     });
 });
