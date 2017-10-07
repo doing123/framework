@@ -3,9 +3,9 @@ define([], function() {
     return function() {
         this.background = $("<div>").css({
             "z-index": 1e10,
-            "background": "#aaaaaa url('/static/framework/4.3.5.alpha/theme/default/images/mask-cover.png') 50% 50% repeat-x",
+            "background": "",
             "opacity": ".30",
-            "filter": "Alpha(Opacity=30)",
+            "filter": "",
             "position": "fixed",
             "top": 0,
             "left": 0,
@@ -20,7 +20,7 @@ define([], function() {
             "width": "100%",
             "height": "100%",
             "top": 0,
-            "background-image": "url('/static/framework/4.3.5.alpha/theme/default/images/mask-loading.gif')",
+            "background-image": "",
             "background-repeat": "no-repeat",
             "background-position": "50%"
         });
@@ -41,7 +41,7 @@ define([], function() {
             "width": "100%",
             "height": "100%",
             "top": 0,
-            "background-image": "url('/static/framework/4.3.5.alpha/theme/default/images/loading_big.gif')",
+            "background-image": "",
             "background-repeat": "no-repeat",
             "background-position": "50%"
         });

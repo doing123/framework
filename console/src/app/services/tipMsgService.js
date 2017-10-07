@@ -1,44 +1,40 @@
-define(["language-remote/framework", "app-remote/framework/localization/config", "app-remote/services/cookieService"], function(i18n, localizationConfig, Storage) {
+define(["language-remote/framework",
+    "app-remote/framework/localization/config",
+    "app-remote/services/cookieService"], function (i18n, localizationConfig, Storage) {
     "use strict";
     var storage, tipMessage;
-    $.fn.alert = function() {
+    $.fn.alert = function () {
         var self = $(this);
-        self.find(".close").bind("click", function() {
+        self.find(".close").bind("click", function () {
             self.remove()
         })
     }
     ;
     storage = new Storage;
-    tipMessage = function($timeout) {
+    tipMessage = function ($timeout) {
         var target, types, images, fade_duration, auto_fade_alerts_delay;
         $timeout || ($timeout = setTimeout);
         target = "#frame-cloud-messages-tips";
         types = ["error", "success"];
         images = {
             "success": {
-                "url": "/static/framework/4.3.5.alpha/theme/default/images/cloud-tips-success.png"
+                "url": "./theme/default/images/cloud-tips-success.png"
             },
             "error": {
-                "url": "/static/framework/4.3.5.alpha/theme/default/images/cloud-tips-error.png"
-            },
-            "success-big": {
-                "url": "theme/default/images/cloud-tips-success-big.png"
-            },
-            "error-big": {
-                "url": "theme/default/images/cloud-tips-error-big.png"
+                "url": "./theme/default/images/cloud-tips-error.png"
             }
         };
         fade_duration = 2e3;
         auto_fade_alerts_delay = 5e3;
-        this.alert = function(type, message, marginLeft, width) {
+        this.alert = function (type, message, marginLeft, width) {
             this.alertCore(!1, type, message, marginLeft, width)
         }
         ;
-        this.alertAdaptive = function(type, message, marginLeft, width) {
+        this.alertAdaptive = function (type, message, marginLeft, width) {
             this.alertCore(!0, type, message, marginLeft, width)
         }
         ;
-        this.alertCore = function(adaptiveFlag, type, message, marginLeft, width) {
+        this.alertCore = function (adaptiveFlag, type, message, marginLeft, width) {
             var messageTemplate = $('<div class="alert alert-block fade in frame-cloud-alert-block frame-normal-font-size"><a class="close frame-cloud-close" data-dismiss="alert">&times;</a><p></p></div>');
             if (type === types[0])
                 messageTemplate.addClass("frame-cloud-alert-error");
@@ -62,31 +58,31 @@ define(["language-remote/framework", "app-remote/framework/localization/config",
             return messageTemplate
         }
         ;
-        this.clearErrorMessages = function() {
+        this.clearErrorMessages = function () {
             $(target + " .alert.frame-cloud-alert-error").remove()
         }
         ;
-        this.clearSuccessMessages = function() {
+        this.clearSuccessMessages = function () {
             $(target + " .alert.frame-cloud-alert-success").remove()
         }
         ;
-        this.clearAllMessages = function() {
+        this.clearAllMessages = function () {
             this.clearErrorMessages();
             this.clearSuccessMessages()
         }
         ;
-        this.autoDismissAlerts = function() {
+        this.autoDismissAlerts = function () {
             var self = this;
-            $(target + " .alert").each(function(index, alert) {
+            $(target + " .alert").each(function (index, alert) {
                 var $alert = $(this)
                     , types = $alert.attr("class").split(" ");
-                $.grep(types, function(value) {
+                $.grep(types, function (value) {
                     return -1 !== $.inArray(value, types)
                 }).length > 0 && self.autoDismissAlert($alert)
             })
         }
         ;
-        this.storageMsg = function(type, msg) {
+        this.storageMsg = function (type, msg) {
             var agencyID, tipsMessages, msgData = {};
             msgData.content = "[" + type + "] " + msg;
             msgData.time = new Date;
@@ -99,15 +95,15 @@ define(["language-remote/framework", "app-remote/framework/localization/config",
             $(".frame-message-round") && $(".frame-message-round").css("display", "block")
         }
         ;
-        this.autoDismissAlert = function(itemMessage) {
-            $timeout(function() {
+        this.autoDismissAlert = function (itemMessage) {
+            $timeout(function () {
                 itemMessage.fadeOut(fade_duration).remove()
             }, auto_fade_alerts_delay)
         }
         ;
-        this.init = function() {
+        this.init = function () {
             var self = this;
-            $("a.ajax-modal").click(function() {
+            $("a.ajax-modal").click(function () {
                 self.clearAllMessages()
             });
             self.autoDismissAlerts()

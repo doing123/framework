@@ -66,7 +66,6 @@
             }
         )(window);
         supportLanguage = ["zh-cn", "en-us"];
-        window.cloudCookieDomain = "hwclouds.com";
         browserCodeMap = {
             "zh": "zh-cn",
             "en": "en-us",
@@ -74,8 +73,6 @@
             "es": "es-es",
             "pt": "pt-br"
         };
-        window.bussinessVersion = getCookie("ttl");
-        window.frameworkVersion = getCookie("ttf");
         getLanguage("locale")
     }
 )();
