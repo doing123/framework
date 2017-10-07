@@ -18,6 +18,11 @@ require.config({
         "lazy-load": "./lib/lazy-load",
         "fixtures": "./fixtures",
         "remote-lib": "./lib"
+    },
+    "shim": {
+        "angular": {exports: "angular"},
+        "angular-ui-router": ["angular"]
+
     }
 });
 /*require(["remote-lib/analysis"], function(analysis) {
