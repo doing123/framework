@@ -1,7 +1,7 @@
 /*global define:true,window:true,angular:true*/
 /*jshint -W030*/
 /* jshint -W097 */
-define(["angular/angular-animate",
+define(["angular-animate",
         "ui-router/angular-ui-router",
         "language-remote/widgetsLanguage",
         "language-remote/tiny2Language",
@@ -30,18 +30,11 @@ define(["angular/angular-animate",
         window.tiny.language = tiny2Language;
         window.tinyPlus || (window.tinyPlus = {});
         window.tinyPlus.language = tinyPlusLang;
-        /*window.tinyPlus.constants = {
-         "currency_unit": window.fw_global.currency_unit,
-         "link_user_center": window.fw_global.link_user_center
-         };*/
         dependency = [
             "ng",
-            /*"wcc",
-            "tiny",*/
             "ngAnimate",
             "ui.router",
             "hws",
-            /*"tinyPlus",*/
             frameworkConfig.name,
             rdsConfig.name];
         framework = angular.module("framework", dependency);
@@ -61,9 +54,6 @@ define(["angular/angular-animate",
         framework.service("msgService", msgService);
         framework.service("localeService", localeService);
         window.appWebPath = "/rds";
-        window.global_endpoint_id = "";
-        window.app_cookie_prefix = "";
-        window.app_enable_framework_503 = !1;
         framework.config(["$controllerProvider", "$compileProvider",
             function ($controllerProvider, $compileProvider) {
                 framework.controllerProvider = $controllerProvider;
@@ -73,15 +63,6 @@ define(["angular/angular-animate",
         framework.run(["$rootScope", "$timeout", function ($rootScope, $timeout) {
             $rootScope.cti = window.tinyPlus.utils;
             $rootScope.$on("$stateChangeSuccess", function (event, toState, toParams, fromState, fromParams) {
-                "function" == typeof ha && $timeout(function () {
-                    ha("setAutoSendPV", !1);
-                    ha("set", {
-                        "url": location.href
-                    });
-                    ha("trackPageView", {
-                        "page_hierarchy": "c:{" + toState.name.replace(/\./g, "/") + "}"
-                    })
-                }, 1)
             });
         }
         ]);
