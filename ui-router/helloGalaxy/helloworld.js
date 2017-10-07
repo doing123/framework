@@ -25,24 +25,28 @@ myApp.config(function ($stateProvider) {
         url: '/people',
         component: 'people',
         resolve: {
-            people: function () {
+            people: function ($q) {
+                /**
+                 * 异步数据获取？？？
+                 */
+                /*var deferred = $q().defer();
+                setTimeout(function(){
+                    deferred.resolve(testArr);
+                }, 1000);
+                return deferred.promise;*/
                 return testArr;
             }
         }
     };
     var personState = {
-        name: 'person',
-        url: '/people/{personId}',
+        name: 'people.person',
+        url: '/{personId}',
         component: 'person',
         resolve: {
-            person: function ($transition$) {
-                var len = testArr.length;
-                for (var i = 0; i < len; i++) {
-                    if ($transition$.params().personId === String(testArr[i].id)) {
-                        return testArr[i];
-                        console.log(testArr[i]);
-                    }
-                }
+            person: function (people, $stateParams) {
+                return people.find(function (person) {
+                    return String(person.id) === $stateParams.personId;
+                });
             }
         }
     };
@@ -66,11 +70,12 @@ myApp.component('people', {
     template: '<h3>Some people:</h3>' +
     '<ul>' +
     '  <li ng-repeat="person in $ctrl.people">' +
-    '    <a ui-sref="person({ personId: person.id })">' +
+    '    <a ui-sref="people.person({ personId: person.id })">' +
     '      {{person.name}}' +
     '    </a>' +
     '  </li>' +
-    '</ul>'
+    '</ul>' +
+    '<ui-view></ui-view>'//state nest
 });
 myApp.component('person', {
     bindings: {person: '<'},
