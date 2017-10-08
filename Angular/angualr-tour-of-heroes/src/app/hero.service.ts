@@ -10,13 +10,18 @@ import { HEROES } from './mock-heroes';
 export class HeroService {
   //获取英雄数据，添加一个getHeroes的桩数据
   //getHeroes(): void {}
-  getHeroes(): Promise<Hero[]> {
+  getHeroes():Promise<Hero[]> {
     return Promise.resolve(HEROES);
   }
 
-  getHeroesSlowly(): Promise<Hero[]> {
+  getHeroesSlowly():Promise<Hero[]> {
     return new Promise(resolve => {
       setTimeout(() => resolve(this.getHeroes()), 2000);
     })
+  }
+
+  getHero(id:number):Promise<Hero> {
+    return this.getHeroes()
+      .then(heroes => heroes.find(hero => hero.id === id));
   }
 }
