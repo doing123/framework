@@ -1,12 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-/**
- * Hero class
- */
-export class Hero {
-  id:number;
-  name:string;
-}
+import { Hero } from './hero';
+import { HeroService } from './hero.service';
 
 @Component({
   selector: 'app-root',
@@ -22,14 +17,7 @@ export class Hero {
         <span class="badge">{{hero.id}}</span>{{hero.name}}
       </li>
     </ul>
-    <div *ngIf="selectedHero">
-      <h2>{{selectedHero.name}} details!</h2>
-      <div><label>id:</label>{{selectedHero.id}}</div>
-      <div>
-        <label>name:</label>
-        <input [(ngModel)]="selectedHero.name" placeholder="please input a name!">
-      </div>
-    </div>
+    <hero-detail [hero]="selectedHero"></hero-detail>
     `,
   //styleUrls: ['./app.component.css']
   //任意浏览器的默认字体高度16px（16像素）。所有未经调整的浏览器都符合: 1em=16px。
@@ -81,37 +69,35 @@ export class Hero {
       margin-right: 0.8em;
       border-radius: 4px 0 0 4px;
     }
-  `]
+  `],
+  providers: [HeroService]
 })
-export class AppComponent {
+
+//生命周期钩子
+export class AppComponent implements OnInit {
   title = 'Tour of Heroes';
-  //现在有了一Hero类，把组件hero属性的类型换成Hero。以1为id、以‘Windstorm’为名字初始化
-  //hero property
-  /*hero:Hero = {
-   id: 1,
-   name: 'Windstorm'
-   };*/
-  selectedHero:Hero;
-  //hero array property
-  heroes = HEROES;
+  heroes: Hero[];
+  selectedHero: Hero;
+
+  //注入HeroService
+  constructor(private heroService:HeroService){ }
+
+  getHeroes(): void {
+    //this.heroes = this.heroService.getHeroes();
+    //this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    this.heroService.getHeroesSlowly().then(heroes => this.heroes = heroes);
+  }
+
+  ngOnInit(): void{
+    this.getHeroes();
+  }
+
   //添加onSelect方法，用于将用户点选的英雄赋值给selectedHero属性
   onSelect(hero: Hero): void{
     this.selectedHero = hero;
   }
-}
 
-//创建一个由十位英雄组成的数组 hero array
-const HEROES:Hero[] = [
-  {id: 1, name: 'Mr doing001'},
-  {id: 2, name: 'Mr doing002'},
-  {id: 3, name: 'Mr doing003'},
-  {id: 4, name: 'Mr doing004'},
-  {id: 5, name: 'Mr doing005'},
-  {id: 6, name: 'Mr doing006'},
-  {id: 7, name: 'Mr doing007'},
-  {id: 8, name: 'Mr doing008'},
-  {id: 9, name: 'Mr doing009'},
-  {id: 10, name: 'Mr doing0010'}
-];
+
+}
 
 
