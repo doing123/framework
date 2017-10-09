@@ -3,6 +3,12 @@ import { NgModule } from '@angular/core';
 
 //从@angular/forms库中导入符号FormsModule
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
+//在拥有一个能处理web请求的服务器之前，我们可以先用HTTP客户端通过一个模拟（Mock）服务
+//(内存web API)老获取和保存数据
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 import { AppComponent } from './app.component';
 //每个组件都必须在一个（且只有一个）Angular模块中声明
@@ -28,7 +34,10 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
+
   ],
   //添加HeroService到AppModule的providers数组中，因为每一个视图都需要它
   providers: [HeroService],
