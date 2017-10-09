@@ -25,16 +25,16 @@ myApp.config(function ($stateProvider) {
         url: '/people',
         component: 'people',
         resolve: {
-            people: function ($q) {
+            people: function ($q, $timeout) {
                 /**
                  * 异步数据获取？？？
                  */
-                /*var deferred = $q().defer();
-                setTimeout(function(){
+                var deferred = $q.defer();
+                 $timeout(function(){
                     deferred.resolve(testArr);
                 }, 1000);
-                return deferred.promise;*/
-                return testArr;
+                return deferred.promise;
+                //return testArr;
             }
         }
     };

@@ -1,11 +1,11 @@
 require.config({
     //config:常常需要将配置信息传给一个模块
     config: {
-        'content': {
+        'app/content': {
             'size': 10,
             'color': 'blue'
         },
-        'bar':{
+        'app/bar':{
             'size':'bar-11',
             'color':'bar-blue'
         }
