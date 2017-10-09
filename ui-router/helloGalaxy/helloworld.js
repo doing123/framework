@@ -27,7 +27,7 @@ myApp.config(function ($stateProvider) {
         resolve: {
             people: function ($q, $timeout) {
                 /**
-                 * 异步数据获取？？？
+                 * 异步数据获取
                  */
                 var deferred = $q.defer();
                  $timeout(function(){
