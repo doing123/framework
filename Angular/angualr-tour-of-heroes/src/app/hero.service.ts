@@ -15,12 +15,12 @@ export class HeroService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private heroesUrl = 'api/heroes';
 
-  constructor(private http:Http) {
+  constructor(private http: Http) {
   }
 
   //获取英雄数据，添加一个getHeroes的桩数据
   //getHeroes(): void {}
-  getHeroes():Promise<Hero[]> {
+  getHeroes(): Promise<Hero[]> {
     //return Promise.resolve(HEROES);
     return this.http.get(this.heroesUrl)
       .toPromise()
@@ -28,7 +28,7 @@ export class HeroService {
       .catch(this.handleError);
   }
 
-  private handleError(error:any):Promise<any> {
+  private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
@@ -66,7 +66,7 @@ export class HeroService {
       .catch(this.handleError);
   }
 
-  delete(id:number):Promise<void> {
+  delete(id: number): Promise<void> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http
       .delete(url, {headers: this.headers})
