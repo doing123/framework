@@ -1,4 +1,5 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
+//npm install angular-in-memory-web-api --save
 //import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
 //import { InMemoryDbService } from 'angular-in-memory-web-api/in-memory-backend.service';
 

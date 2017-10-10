@@ -16,6 +16,7 @@ import { HeroDetailComponent } from './hero-detail.component';
 import { HeroesComponent } from './heroes.component';
 import { HeroService } from './hero.service';
 import { DashboardComponent } from './dashboard.component';
+import { HeroSearchComponent } from './hero-search.component';
 
 //配置路由
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +29,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     HeroDetailComponent,
     HeroesComponent,
-    DashboardComponent
+    DashboardComponent,
+    HeroSearchComponent
   ],
   //把FormsModule添加到@NgModule元数据的imports数组中，它是当前应用正在使用的外部模板列表
   imports: [
