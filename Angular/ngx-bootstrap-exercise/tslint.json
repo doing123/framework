@@ -57,7 +57,7 @@
     "no-empty-interface": true,
     "no-eval": true,
     "no-inferrable-types": [
-//      true,
+      true,
       "ignore-params"
     ],
     "no-misused-new": true,
@@ -81,7 +81,7 @@
     ],
     "prefer-const": true,
     "quotemark": [
-//      true,
+      true,
       "single"
     ],
     "radix": true,

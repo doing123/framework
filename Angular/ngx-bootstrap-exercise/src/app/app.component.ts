@@ -6,8 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // title = 'app';
-  max: number = 10;
-  rate: number = 7;
-  isReadonly: boolean = false;
+  title = 'app';
 }
