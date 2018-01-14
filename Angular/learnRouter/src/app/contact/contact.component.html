@@ -1,0 +1,17 @@
+<h1>
+  contact works!
+</h1>
+<p>当前登录人Id: {{contactId}}</p>
+<p>当前登录人名称: {{contactName}}</p>
+
+<div class="row">
+  <div class="col-sm-3 col-md-3 col-lg-3">
+    <ul class="nav nav-pills nav-stacked">
+      <li role="presentation"><a [routerLink]="['./zhangsan']">张三</a></li>
+      <li role="presentation"><a [routerLink]="['./doing123']">doing123</a></li>
+    </ul>
+  </div>
+  <div class="col-sm-7 col-md-7 col-lg-7">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<nav class="navbar navbar-inverse navbar-fixed-top clearfix">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" [routerLink]="['/home']">主页</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <!-- path方式 -->
+      <li><a [routerLink]="['/contact', 1]">联系人</a></li>
+
+      <!-- query方式 -->
+      <!--<li><a [routerLink]="['/contact']" [queryParams]="{id: 1}">联系人</a></li>-->
+
+      <!-- 辅助路由 -->
+      <li><a [routerLink]="[{outlets: {aux: ['chat']}}]">聊天</a></li>
+
+      <!-- 异步加载/延迟加载的模块，不能放在根目录同级目录下？？？ -->
+      <li><a [routerLink]="['/async']">懒加载</a></li>
+    </ul>
+  </div>
+</nav>
+
+<hr>
+<hr>
+
+<button (click)="gotoContact()">跳转去联系人页面</button>
+
+<router-outlet></router-outlet>
+
+<router-outlet name="aux"></router-outlet>
+
