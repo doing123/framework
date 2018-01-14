@@ -1,0 +1,14 @@
+<div style="border: 1px solid;">
+  <h4>ng-content示例</h4>
+  <div style="background-color: green; padding: 5px; margin: 2px;">
+    <ng-content select="header"></ng-content>
+  </div>
+  <div style="background-color: gray; padding: 5px; margin: 2px;">
+    <ng-content select=".selected"></ng-content>
+  </div>
+  <div style="background-color: blue; padding: 5px; margin: 2px;">
+    <ng-content select="[name=footer]"></ng-content>
+  </div>
+  <ng-content select="span"></ng-content>
+  <!--<div [innerHTML]="divContent"></div>-->
+</div>

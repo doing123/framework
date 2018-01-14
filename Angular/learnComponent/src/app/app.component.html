@@ -6,4 +6,30 @@
 
 <!--<app-litter-star></app-litter-star>-->
 
-<app-order-parent></app-order-parent>
+<!--<app-order-parent></app-order-parent>-->
+
+<!-- [names]="title":父传子 -->
+<!--<app-life [names]="title"></app-life>-->
+
+<!-- 生命周期 -->
+<!--<div>
+  <h2>I'm Parent</h2>
+  <div>
+    what's your name: <input type="text" [(ngModel)]="user.name">
+  </div>
+  <div>
+    what's your say: <input type="text" [(ngModel)]="content">
+  </div>
+  <app-learn-change [content]="content" [user]="user"></app-learn-change>
+</div>-->
+
+<!-- ng-content -->
+<!--<app-ng-content-app></app-ng-content-app>-->
+
+<!--<app-form-button></app-form-button>-->
+<!--<app-form-input></app-form-input>-->
+<!--<app-form-list></app-form-list>-->
+<!--<app-more-list></app-more-list>-->
+<form action="">
+  <router-outlet></router-outlet>
+</form>
