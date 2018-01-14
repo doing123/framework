@@ -1,0 +1,35 @@
+<!-- 输入属性 -->
+<div>
+  <input type="text" placeholder="请输入数量" [(ngModel)]="stockNumber"><br>
+  <input type="text" placeholder="请输入股票代码" [(ngModel)]="stock">
+  <!--<input type="text" placeholder="请输入股票代码" [(ngModel)]="doing.stock">-->
+
+  <!-- 双向数据绑定 -->
+  <p>{{stockNumber}}</p>
+  <P>{{stock}}</P>
+
+  <p>{{doing.amount}}</p>
+  <p>{{doing.names}}</p>
+
+  <!-- [stockCode]="stock"：父组件中值的改变导致子组件的变化，子组件不会改变父组件 -->
+  <!--<app-order [stockCode]="stock" [amount]="100"></app-order>-->
+  <!-- #doing:通过局部变量的方式实现数据交互，能让父组件调用子组件的参数或方法-->
+  <!--<app-order [stockCode]="doing.stock" [amount]="doing.amount" #doing></app-order>-->
+  <app-order [stockCode]="stock" #doing></app-order>
+  <!--<app-order [stockCode]="stock" [amount]="amount"></app-order>-->
+</div>
+
+<!-- 输出属性 -->
+<!--<app-price-quote (lastPrice)="buyHandler($event)"></app-price-quote>-->
+<!--<app-price-quote (buy)="buyHandler($event)"></app-price-quote>
+
+<hr>
+
+<div>
+  这是父组件，在price-quote组件外， 股票代码是{{priceQuote.stockCode}}，
+  股票价格是{{priceQuote.lastPrice | number:'2.2-2'}}
+</div>
+
+<hr>
+
+<app-order [priceQuote]="priceQuote"></app-order>-->
