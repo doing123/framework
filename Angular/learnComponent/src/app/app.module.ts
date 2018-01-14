@@ -21,7 +21,8 @@ import {RouterModule, Routes} from "@angular/router";
 
 const appRoutes: Routes = [
   {path: 'next', component: MoreListComponent},
-  {path: '', component: FormListComponent}
+  {path: '', component: FormListComponent},
+  {path: '**', component: FormListComponent} // 重定向
 ];
 
 @NgModule({
