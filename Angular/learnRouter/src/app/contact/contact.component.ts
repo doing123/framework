@@ -27,10 +27,21 @@ export class ContactComponent implements OnInit, OnDestroy {
     this.sub = this.routeInfo.params.subscribe((params: Params) => {
       this.contactId = params['id'];
     });
+
+    // 这里是Resolve守卫返回的值
+    this.routeInfo.data.subscribe((data: { content: Contact }) => {
+      this.contactId = data.content.id;
+      this.contactName = data.content.name;
+    });
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
 
+}
+
+export class Contact {
+  constructor(public id: number, public name: string) {
+  }
 }

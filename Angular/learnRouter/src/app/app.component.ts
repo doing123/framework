@@ -14,7 +14,7 @@ export class AppComponent {
 
   gotoContact() {
     // this.router.navigate(['/contact'], 3);
-    this.router.navigate(['/contact', 2]);
+    this.router.navigate(['/contact', 1]);
     // this.router.navigate(['/contact', {id: 5}]); // Matrix参数：矩阵URL标记法
   }
 }

@@ -8,7 +8,6 @@ import { ChatComponent } from './chat/chat.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { GuardComponent } from './guard/guard.component';
 import { Doing123Component } from './doing123/doing123.component';
 import { ZhangsanComponent } from './zhangsan/zhangsan.component';
 
@@ -20,7 +19,6 @@ import { ZhangsanComponent } from './zhangsan/zhangsan.component';
     ContactComponent,
     HomeComponent,
     NotFoundComponent,
-    GuardComponent,
     Doing123Component,
     ZhangsanComponent
   ],
